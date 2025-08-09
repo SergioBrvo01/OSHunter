@@ -12,7 +12,7 @@ function show_banner() {
  \___/\____/\_| |_/\__,_|_| |_|\__\___|_|   
 EOF
   echo -e "\e[0m"
-  echo -e "\e[1;33mOSHunter v1.0 - AutoDetect Operative System\e[0m"
+  echo -e "\e[1;33mOSHunter v1.5 - AutoDetect Operative System\e[0m"
   echo -e "\e[34m---------------------------------------------\e[0m"
   echo -e "by sergiobrvo01"
 }
@@ -26,17 +26,21 @@ trap ctrl_c INT
 
 function check_os() {
     while true; do
-        echo -e "\n"
-        read -p "IP Address (or 'q' to quit): " ip
-        [[ "$ip" == "q" ]] && exit 0
-        
+        if [[ -z "$1" ]]; then
+            echo -e "\n"
+            read -p "IP Address (or 'q' to quit): " ip
+            [[ "$ip" == "q" ]] && exit 0
+        else
+            ip="$1"
+        fi
+
         # IP Validation
         if [[ -z "$ip" ]]; then
             echo -e "\e[1;31m\n[!] Error: IP Address cannot be empty\e[0m"
             continue
         elif [[ ! $ip =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo -e "\e[1;31m\n[!] Error: Invalid IP format\e[0m"
-            continue
+            exit 1
         fi
         
         echo -e "\nDetecting OS for $ip..."
@@ -79,5 +83,5 @@ function check_os() {
 }
 
 show_banner
-check_os
+check_os "$@"
 

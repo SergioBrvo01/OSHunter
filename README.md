@@ -3,7 +3,7 @@ OSHunter is a lightweight Bash script designed to detect the operating system of
 
 ## 🛠 Installation
 ```bash
-git clone https://github.com/yourusername/OSHunter.git
+git clone https://github.com/SergioBrvo01/OSHunter.git
 cd OSHunter
 chmod +x oshunter.sh
 ```

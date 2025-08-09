@@ -9,10 +9,19 @@ chmod +x oshunter.sh
 ```
 
 ## Example Output
+**Interactive:**
 ```bash
+./oshunter.sh
 IP Address (or 'q' to quit): 192.168.1.1
-
 Detecting OS for 192.168.1.1...
+[*] Detected TTL: 64
+[+] Target OS: Linux or macOS
+```
+
+**Arguments:**
+```bash
+./oshunter.sh 192.168.1.30
+Detecting OS for 192.168.1.30...
 [*] Detected TTL: 64
 [+] Target OS: Linux or macOS
 ```
